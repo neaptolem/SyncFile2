@@ -1,24 +1,17 @@
-/**
- * Created by andrian on 9/20/16.
- */
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.Date;
 
 public class View extends Application{
     private TextPanel textArea= new TextPanel();
     private VBox vbox=new VBox(textArea);
     private Button btn=new Button();
     private Scene scene = new Scene(vbox, 300, 250);
-    FileController fileController=new FileController();
+    private FileController fileController=new FileController();
 
     public static void main(String[] args) {
         launch(args);
@@ -34,7 +27,7 @@ public class View extends Application{
 
         fileController.start();
         fileController.addListener(textArea);
-        for (int i=0; i<5; i++){
+        for (int i=0; i<2; i++){
             Test test=new Test(fileController, "TestThread"+i);
             test.start();
             try {

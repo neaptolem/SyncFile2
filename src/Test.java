@@ -1,8 +1,4 @@
 import java.util.Date;
-
-/**
- * Created by andrian on 9/20/16.
- */
 public class Test extends Thread {
     private String name;
     private FileController fileController;
@@ -22,6 +18,7 @@ public class Test extends Thread {
         runTest("Test2");
         sleep(2000);
 
+        customFile=fileController.getActive();
         setFileItem(customFile, 1);
         runTest("Test3");
         sleep(2000);
@@ -37,6 +34,7 @@ public class Test extends Thread {
 
     private void runTest(String nameTest) {
         System.out.println(name+"::"+nameTest+"\n" + customFile.equals(fileController.getActive()));
+//        System.out.println(customFile.toPrint()+"    "+fileController.getActive().toPrint());
     }
 
     private void sleep(int miliseconds) {

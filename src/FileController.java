@@ -23,8 +23,8 @@ public class FileController extends Thread {
         for (; ; ) {
             lock.lock();
             active = readFromFile();
-            if (! active.equals(archive)) {
-               // System.out.println("changed");
+            if (!active.equals(archive)) {
+                // System.out.println("changed");
                 backup(active);
                 try {
                     Thread.sleep(1000);
@@ -36,7 +36,8 @@ public class FileController extends Thread {
 
         }
     }
-    public CustomFile getActive(){
+
+    public CustomFile getActive() {
         return this.active;
     }
 
@@ -67,7 +68,7 @@ public class FileController extends Thread {
         CustomFile file = new CustomFile();
         try {
             lock.lock();
-            File readFile=new File(fileName);
+            File readFile = new File(fileName);
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             line = br.readLine();
             if (line != null) {
@@ -93,7 +94,7 @@ public class FileController extends Thread {
 
     public void changeFile(CustomFile customFile) {
         lock.lock();
-        if (! active.equals(customFile)) {
+        if (!active.equals(customFile)) {
 //            System.out.println("File changed");
             active = customFile;
             backup(customFile);
@@ -101,9 +102,9 @@ public class FileController extends Thread {
         lock.unlock();
     }
 
-    public void changeFileItem(FileItem fileItem, int index){
+    public void changeFileItem(FileItem fileItem, int index) {
         lock.lock();
-        CustomFile customFile=new CustomFile(active);
+        CustomFile customFile = new CustomFile(active);
         customFile.setData(fileItem, index);
         changeFile(customFile);
         lock.unlock();
